@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop smart with NovaStore: browse products, filter categories, sort results, and manage your cart.">
+  <meta name="theme-color" content="#101827">
+  <title>NovaStore | E-commerce Capstone</title>
+  <link rel="preconnect" href="https://fakestoreapi.com">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to products</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="NovaStore home"><span class="brand-mark">N</span> NovaStore</a>
+      <form id="searchForm" class="search-form" role="search">
+        <label class="sr-only" for="searchInput">Search products</label>
+        <input id="searchInput" type="search" placeholder="Search products..." autocomplete="off">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle color theme" title="Toggle theme">☾</button>
+        <button id="cartToggle" class="cart-button" type="button" aria-label="Open shopping cart">
+          <span aria-hidden="true">Bag</span><span id="cartCount" class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE EVERYDAY EDIT</p>
+        <h1>Find your next<br><span>favorite thing.</span></h1>
+        <p>Thoughtful picks for your everyday life. Explore the collection and make it yours.</p>
+        <a class="hero-link" href="#catalog">Explore collection <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-card"><span>NEW<br>SEASON</span><b>✳</b></div>
+        <div class="art-spark spark-one">✦</div><div class="art-spark spark-two">✧</div>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog-section">
+      <div class="catalog-heading">
+        <div><p class="eyebrow">CURATED FOR YOU</p><h2>Shop the collection</h2><p id="resultSummary" class="muted">Loading products…</p></div>
+        <label class="sort-control">Sort by
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="catalog-layout">
+        <aside class="filters" aria-label="Product filters">
+          <div class="filter-title"><h3>Categories</h3><button id="clearFilters" class="text-button" type="button">Clear</button></div>
+          <div id="categoryFilters" class="category-list"><p class="muted">Loading categories…</p></div>
+          <div class="filter-divider"></div>
+          <h3>Price range</h3>
+          <label for="priceRange" class="range-label">Up to <strong id="priceValue">$1,000</strong></label>
+          <input id="priceRange" type="range" min="1" max="1000" value="1000">
+          <div class="filter-divider"></div>
+          <label class="check-row"><input id="ratingFilter" type="checkbox"> Rating 4.0+</label>
+          <label class="check-row"><input id="inStockFilter" type="checkbox"> In-stock picks</label>
+        </aside>
+
+        <div class="products-area">
+          <div id="status" class="status" role="status" aria-live="polite">Fetching products…</div>
+          <div id="productGrid" class="product-grid"></div>
+          <div id="emptyState" class="empty-state" hidden><span>⌕</span><h3>No products found</h3><p>Try changing your search or filters.</p><button id="resetEmpty" class="primary-button" type="button">Reset filters</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="cartBackdrop" class="backdrop" hidden></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button id="closeCart" class="icon-button" type="button" aria-label="Close cart">×</button></div>
+    <div id="cartItems" class="cart-items"><p class="muted">Your bag is empty.</p></div>
+    <div class="cart-footer"><div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><p class="cart-note">Shipping and taxes calculated at checkout.</p><button id="checkoutButton" class="primary-button full-button" type="button">Continue to checkout</button><button id="continueShopping" class="text-button full-button" type="button">Continue shopping</button></div>
+  </aside>
+
+  <dialog id="productDialog" class="product-dialog">
+    <button id="closeDialog" class="dialog-close" type="button" aria-label="Close product details">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer class="site-footer"><span>© 2026 NovaStore Capstone</span><span>Demo storefront · Product data via Fake Store API</span></footer>
+</body>
+</html>
